@@ -6,7 +6,7 @@ const starRating = ({totalStars=5, starsSelected=0, onChange=f=>f})=>{
         <div className='starRating'> 
         {
             [...Array(totalStars)].map((n,i) => 
-                <Star key={i} selected={i<starsSelected} onClick={() => onChange(i)}/>
+                <Star key={i} selected={i<starsSelected} onClick={() => onChange(i+1)}/>
         )          
         }      
         </div>

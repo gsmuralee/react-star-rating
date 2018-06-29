@@ -1,31 +1,27 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
 
-class AddColorForm extends Component {
-  constructor(props) {
-    super(props);
-    this.submit = this.submit.bind(this);
-    debugger;
+class App extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      colors: []
+    }
+    this.onAddColor = this.onAddColor.bind(this)
   }
-  
-  submit(e){
-    const {_title, _color} = this.refs
-    e.preventDefault();
-    this.props.onNewColor(_title.value, _color.value);
-    _title.value = "";
-    _color.value = '#000000';
-    _title.focus();
+
+  onAddColor(title, value){
+    this.setState({colors: [...this.state.colors, {title, value}]});
   }
-  render(){
+
+  render (){
+    const {colors} = this.state;
     return (
-      <form onSubmit={this.submit}>
-        <input ref="_title" type="text" placeholder="title color ..." required/>
-        <input ref="_color" type="color"  required/>
-        <button> Add </button>
-        </form>
+      <div className="app"> 
+        <AddColorForm onNewColor={onAddColor} />
+        <ColorList colors={colors} />
+      </div>
     )
   }
 }
 
-export default AddColorForm;
+export default App
