@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
 const AddColorForm = ({onNewColor=f=>f}) => {
+    let _title, _color;
     const submit =(e) => {
-        let _title, _color;
         e.preventDefault();
         onNewColor(_title.value, _color.value);
         _title.value = "";
@@ -13,12 +11,11 @@ const AddColorForm = ({onNewColor=f=>f}) => {
     }
     return (
         <form onSubmit={submit}>
-        <input ref={input => _title = input} type="text" placeholder="title color ..." required/>
-        <input ref={input => _color = input} type="color"  required/>
-        <button> Add </button>
+            <input ref={input => _title = input} type="text" placeholder="title color ..." required/>
+            <input ref={input => _color = input} type="color"  required/>
+            <button> Add </button>
         </form>
-    )
-        
+    )     
 }
 
 export default AddColorForm;
